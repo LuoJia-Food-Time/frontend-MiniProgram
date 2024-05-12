@@ -18,6 +18,17 @@
 		        </uni-card>
 		      </uni-section>
 		</view>
+		
+		<uni-section title="默认样式" type="line" padding>
+					<uni-pagination :current="current" :total="100" title="标题文字" :show-icon="true" @change="change" />
+					当前页：{{ current }}
+			</uni-section>
+		
+		<uni-fab ref="fab" :pattern="pattern" :content="content" :horizontal="horizontal" :vertical="vertical"
+					:direction="direction"  @fabClick="fabClick" @trigger="trigger"/>
+					
+					
+			</view>
 	</view>
 </template>
 
@@ -56,7 +67,20 @@ export default {
 				  cover: 'path/to/image2.jpg',
 				  content: '第二张卡片的内容'
 				}
-			  ]
+			  ],
+			  
+			  
+			  content: [
+			  					
+			  					{
+			  						iconPath: '/static/star.png',
+			  						selectedIconPath: '/static/star-active.png',
+			  						text: '发布帖子',
+			  						active: false
+			  					}
+			  				],
+							
+		current: 1
 		};
 	},
 	methods: {
@@ -67,7 +91,9 @@ export default {
 			});
 		},
 		onClick(e) {
-			console.log(e);
+			uni.navigateTo({
+								url:'/pages/post/post?detail=+JSON.stringify(this.item)'
+							});
 		},
 		actionsClick(text) {
 			uni.showToast({
@@ -79,7 +105,24 @@ export default {
 			// #ifdef APP-PLUS
 			plus.key.hideSoftKeybord();
 			// #endif
-		}
+		},
+		fabClick() {
+						uni.showToast({
+							title: '点击了悬浮按钮',
+							icon: 'none'
+						})
+					},
+		change(e) {
+						console.log(e)
+						this.current = e.current
+					},
+		trigger(e) {
+						console.log(e)
+						this.content[e.index].active = !e.item.active
+						uni.navigateTo({
+							url: '/pages/addPost/addPost'
+						});
+					},
 	}
 };
 
@@ -119,5 +162,15 @@ export default {
   margin-bottom: 20px;
 }
 
+.warp {
+		padding: 10px;
+	}
 
+	.button {
+		margin-bottom: 10px;
+	}
+	
+	
+	
+	
 </style>
