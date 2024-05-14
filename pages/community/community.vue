@@ -1,35 +1,39 @@
 <template>
-	<view style="padding: 20rpx">
-		<view class="box">
-			<uni-section title="基本用法" type="line">
-				<uni-search-bar @confirm="search" :focus="true" v-model="searchValue"></uni-search-bar>
-			</uni-section>
-		</view>
-		<view class="card-list0">
-		<uni-section v-for="(card, index) in cards" :key="index" class="uni-card0">
-		  <uni-card :cover="card.cover" @click="onClick(card)" class=''>
-		    <text >{{ card.content }}</text>
-		          <view slot="actions" class="card-actions">
-		            <view class="card-actions-item" @click="actionsClick('点赞')">
-		              <uni-icons type="heart" size="18" color="#999"></uni-icons>
-		              <text class="card-actions-item-text">点赞</text>
-		            </view>
-		          </view>
-		        </uni-card>
-		      </uni-section>
-		</view>
-		
-		<uni-section title="默认样式" type="line" padding>
-					<uni-pagination :current="current" :total="100" title="标题文字" :show-icon="true" @change="change" />
-					当前页：{{ current }}
-			</uni-section>
-		
-		<uni-fab ref="fab" :pattern="pattern" :content="content" :horizontal="horizontal" :vertical="vertical"
-					:direction="direction"  @fabClick="fabClick" @trigger="trigger"/>
-					
-					
-			</view>
-	</view>
+ <view class="container">
+    <!-- 搜索框 -->
+    <view class="box">
+      <uni-section title="基本用法" type="line">
+        <uni-search-bar @confirm="search" :focus="true" v-model="searchValue"></uni-search-bar>
+      </uni-section>
+    </view>
+
+    <!-- 卡片列表 -->
+    <view class="card-list">
+      <uni-section v-for="(card, index) in cards" :key="index" class="uni-card">
+        <uni-card :cover="card.cover" @click="onClick(card)" class="">
+          <text>{{ card.content }}</text>
+          <view slot="actions" class="card-actions">
+            <view class="card-actions-item" @click="actionsClick('点赞')">
+              <uni-icons type="heart" size="18" color="#999"></uni-icons>
+              <text class="card-actions-item-text">点赞</text>
+            </view>
+          </view>
+        </uni-card>
+      </uni-section>
+    </view>
+
+    <!-- 分页器 -->
+    <view class="box">
+      <uni-section title="默认样式" type="line" padding>
+        <uni-pagination :current="current" :total="100" title="标题文字" :show-icon="true" @change="change" />
+        <!-- 当前页：{{ current }} -->
+      </uni-section>
+    </view>
+
+    <!-- 悬浮按钮 -->
+    <uni-fab ref="fab" :pattern="pattern" :content="content" :horizontal="horizontal" :vertical="vertical"
+      :direction="direction" @fabClick="fabClick" @trigger="trigger" />
+  </view>
 </template>
 
 <script>
@@ -129,48 +133,36 @@ export default {
 </script>
 
 <style>
-.search-result {
-	padding-top: 10px;
-	padding-bottom: 20px;
-	text-align: center;
+.container {
+  padding: 20rpx;
 }
 
-.search-result-text {
-	text-align: center;
-	font-size: 14px;
-	color: #666;
+.box {
+  margin-bottom: 20rpx;
 }
 
-.example-body {
-	/* #ifndef APP-NVUE */
-	display: block;
-	/* #endif */
-	padding: 0px;
+.card-list {
+  margin-bottom: 20rpx;
 }
 
-.uni-mt-10 {
-	margin-top: 10px;
+.uni-card {
+  margin-bottom: 20rpx;
 }
-.card-list0 {
+
+.card-actions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around; 
+  align-items: center;
 }
 
-.uni-card0 {
- width: calc(50% - 5px);
-  margin-bottom: 20px;
+.card-actions-item {
+  margin-right: 10rpx;
+  display: flex;
+  align-items: center;
 }
 
-.warp {
-		padding: 10px;
-	}
-
-	.button {
-		margin-bottom: 10px;
-	}
-	
-	
+.card-actions-item-text {
+  margin-left: 5rpx;
+}
 	
 	
 </style>
