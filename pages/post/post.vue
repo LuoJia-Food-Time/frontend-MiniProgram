@@ -94,10 +94,10 @@ export default {
 			// moment数据
 			momentId: 0,
 			moment: {
-				userName: '用户名',
+				userName: '云淡风轻',
 				userAvatarUrl: '/static/logo.png',
-				imgUrl: '/static/logo.png',
-				content: '内容',
+				imgUrl: '',
+				content: '',
 				createTime: '2024/05/14'
 			},
 			// comment数据
@@ -121,7 +121,16 @@ export default {
 		};
 	},
 
-	async onLoad(options) {},
+	onLoad(options) {
+		console.log(1);
+		console.log(options);
+	  if (options.detail) {
+	   const detail = JSON.parse(decodeURIComponent(options.detail));
+	    console.log(detail.content);
+		this.moment.imgUrl = detail.cover;
+		 this.moment.content =detail.content;
+	  }
+	},
 
 	methods: {
 		// 界面相关函数
