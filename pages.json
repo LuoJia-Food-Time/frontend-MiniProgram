@@ -182,9 +182,39 @@
 				"navigationBarTitleText" : "营养跟踪",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/helptake/helptake",
+			"style" : 
+			{
+				"navigationBarTitleText" : "帮拿",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/addhelpform/addhelpform",
+			"style" : 
+			{
+				"navigationBarTitleText" : "帮拿信息填写",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/pay/weChatPay",
+			"style" : 
+			{
+				"navigationBarTitleText" : "微信支付",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/pay/alipay",
+			"style" : 
+			{
+				"navigationBarTitleText" : "支付宝支付",
+				"enablePullDownRefresh" : false
+			}
 		}
-		
-		
 	],
 	"globalStyle": {
 		// 导航栏标题颜色及状态栏前景颜色，仅支持 black/white
@@ -218,6 +248,12 @@
 				"selectedIconPath": "static/icons/orders-active.png",
 				"text": "订单",
 				"pagePath": "pages/orders/orders"
+			},
+			{
+				"iconPath": "/static/icons/orders.png",
+				"selectedIconPath": "static/icons/orders-active.png",
+				"text": "帮拿",
+				"pagePath": "pages/helptake/helptake"
 			},
 			{
 				"iconPath": "/static/icons/me.png",

@@ -37,6 +37,8 @@
 							@click="changeStatus(item, '已退款')"></uni-tag>
 						<uni-tag v-if="item.status === '待收货'" text="确认收货" size="mini" type="warning"
 							@click="changeStatus(item, '待评价')"></uni-tag>
+						<uni-tag v-if="item.status === '待收货'" text="发布帮拿" size="mini" type="warning"
+							@click="goHelpTake(item.id)"></uni-tag>
 						<uni-tag v-if="item.status === '待评价'" text="评价" size="mini" type="royal" @click="goComment(item.id)"></uni-tag>
 					</view>
 				</view>
@@ -69,6 +71,11 @@
 				uni.navigateTo({
 					url: '/pages/ordersItem/ordersItem?orderId=' + orderId
 				})
+			},
+			goHelpTake(orderId) {
+				uni.navigateTo({
+					url: '/pages/addhelpform/addhelpform?orderId=' + orderId
+				})		 
 			},
 			del(orderId) {
 				this.$request.del('/orders/delete/' + orderId).then(res => {

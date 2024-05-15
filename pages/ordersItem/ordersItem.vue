@@ -23,6 +23,16 @@
 					</view>
 				</view>
 			</view>
+			
+			<view v-if="orders.status === '已发布帮拿'||orders.status === '已接受帮拿' ">
+				<view style="text-align: right;">
+					<text>宿舍号</text>
+					<text style="color: black;">{{ orders.dormnumber }}</text>
+					<text style="margin-left: 20rpx;">悬赏金</text>
+					<text style="color: red;">￥{{ orders.reward }}</text>
+				</view>
+			</view>
+			
 			<!-- 显示优惠和总金额信息 -->
 			<view v-if="orders.discount">
 				<view style="text-align: right;">
