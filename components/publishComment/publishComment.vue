@@ -64,35 +64,13 @@
 					return;
 				}
 
-				this.newComment.momentId = this.momentId;
-				if (this.pageType === 'childrenComment') {
-					this.newComment.parentId = this.parentId;
-				} else {
-					this.newComment.parentId = this.parentComment ? this.parentComment.id : 0;
-				}
-
-				if (this.pageType === 'childrenComment') {
-					this.newComment.replyToId = this.parentComment ? this.parentComment.id : 0;
-				} else {
-					this.newComment.replyToId = 0;
-				}
 
 				uni.showLoading({
 					title: '发布中...'
 				});
-				let [publishCommentData] = await httpUtils.postJson("/comment/publishComment", this.newComment);
+			
 
-				uni.$emit("afterPublishComment", {
-					parentId: this.newComment.parentId,
-					newComment: {
-						id: publishCommentData.body,
-						userId: this.getLoginUser().userId,
-						userName: this.getLoginUser().userName,
-						userAvavarUrl: this.getLoginUser().userAvavarUrl,
-						createTime: '2020-06-01',
-						content: this.newComment.content
-					},
-				});
+				
 				this.newComment = {
 					momentId: null,
 					content: "",
@@ -100,12 +78,10 @@
 					replyToId: 0
 				};
 
-				uni.hideLoading();
 				uni.showToast({
 					title: "发布成功",
 					duration: 2000
 				});
-				console.log("emit afterPublishComment");
 			}
 		}
 	}

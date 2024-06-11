@@ -30,6 +30,7 @@
 			</view>
 		</view>
 		
+		
 		<view class="box">
 			<navigator url="/pages/person/person" style="padding: 15rpx; border-bottom: 2rpx solid #eee;">
 				<uni-icons type="person" size="18"></uni-icons>
@@ -37,7 +38,7 @@
 				<uni-icons type="right" color="#999" style="float: right;"></uni-icons>
 			</navigator>
 			<navigator url="/pages/nutrientTracking/nutrientTracking" style="padding: 15rpx; border-bottom: 2rpx solid #eee;">
-				<uni-icons type="nutrientTracking" size="18"></uni-icons>
+				<uni-icons type="fire" size="18"></uni-icons>
 				<text style="margin-left: 10rpx;">营养跟踪</text>
 				<uni-icons type="right" color="#999" style="float: right;"></uni-icons>
 			</navigator>

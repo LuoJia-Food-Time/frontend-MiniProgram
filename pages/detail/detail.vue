@@ -164,7 +164,7 @@
 			let allPages = getCurrentPages() //获取当前页面栈的实例；
 			let lastPages = allPages.length - 1 // 获得倒数第二个元素的索引；
 			let option = allPages[lastPages].options // 获得上个页面传递的参数；
-			this.businessId = option.businessId
+			this.businessId = 16
 			this.load()
 			this.loadCart()
 		},

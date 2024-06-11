@@ -148,7 +148,7 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "社 区",
-				"enablePullDownRefresh" : false
+				"enablePullDownRefresh" : true
 			}
 		},
 		{
@@ -212,6 +212,14 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "支付宝支付",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/blogPopup/blogPopup",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
 				"enablePullDownRefresh" : false
 			}
 		}

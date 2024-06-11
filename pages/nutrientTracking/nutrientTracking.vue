@@ -25,15 +25,12 @@
         <view class="nutrition-item">蛋白质：{{ tarprotein[target] }} g</view>
       </view>
     </view>
+	<button @click="addData">添加营养信息</button>
     <image class="app_content_middle" src='/static/image/bgImg.jpg'></image>
-    <view class="diet-situation">本月您的饮食情况：{{ situation }}</view>
+    <view class="diet-situation">今日您的饮食情况：{{ situation }}</view>
     
     <!-- 重叠部分 -->
-    <view class="button-container">
-      <image class="button-image" src='/static/image/button.png'></image>
-      <view class="button-text" @click="goToData">查看本月营养数据</view>
-    </view>
-    
+    <view>{{ suggestList[suggest_num ]}} </view>
     <image class="robot-image" src="/static/image/robot.png"></image>
   </view>
 </template>
@@ -42,11 +39,12 @@
   export default {
     data() {
       return {
-        calories: 100,
-        fat: 2222,
-        protein: 300,
+		new_add_arr:[0,0,0],
+        calories: 0,
+        fat: 0,
+        protein: 0,
         situation: "良好，请继续保持",
-        tarcalories: [200, 300, 400],
+        tarcalories: [1900, 2100, 2300],
         tarfat: [20, 30, 40],
         tarprotein: [3, 4, 5],
         target: 0,
@@ -55,16 +53,34 @@
           { value: '1', title: '维持' },
           { value: '2', title: '增肌' }
         ],
+		suggestList: [
+			"主人，根据您近期摄入食物情况以及设立的营养目标分析，您本月饮食十分健康，请继续保持吧！",
+			"主人，根据您近期摄入食物情况以及设立的营养目标分析，您本月摄入高热量食物太多，请适当减少此类食物摄入吧！",
+			"主人，根据您近期摄入食物情况以及设立的营养目标分析，您本月摄入，请适当摄入更多的高蛋白食物吧！"
+		],
+		suggest_num : 1 ,
         current: 0
       }
     },
     onLoad() {},
+	onShow(){
+		let that = this;
+		uni.$on('id',function(ID){
+			that.new_add_arr = ID;
+		});
+		that.add();
+	},
     methods: {
-      goToData() {
-        uni.navigateTo({
-          url: '/pages/nutrientData/nutrientData'
-        })
-      },
+      addData(){
+		  uni.navigateTo({
+		  	url:'/pages/blogPopup/blogPopup'
+		  })
+	  },
+	  add(){
+		  this.calories += this.new_add_arr[0];
+		  this.fat += this.new_add_arr[1];
+		  this.protein += this.new_add_arr[2];
+	  },
       radioChange(evt) {
         for (let i = 0; i < this.radioList.length; i++) {
           if (this.radioList[i].value === evt.detail.value) {
@@ -172,7 +188,6 @@
   text-align: center;
   cursor: pointer;
 }
-
 .robot-image {
   display: block;
   width: 142rpx;
